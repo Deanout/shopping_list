@@ -1,0 +1,31 @@
+<p style="color: green"><%= notice %></p>
+<h1>Total Price: <%= number_to_currency(@total_price) %></h1>
+<h4>Total Purchased: <%= number_to_currency(@total_purchased) %></h4>
+<h4>Total Remaining: <%= number_to_currency(@total_remaining) %></h4>
+<% @categories.each do |category| %>
+  <h3><%= category.name %> - <%= number_to_currency(category.products.sum(:price)) %></h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Purchased</th>
+        <th>URL</th>
+        <th>Product Page</th>
+      </tr>
+    </thead>
+    <tbody data-controller="products">
+      <% category.products.each do |product| %>
+        <tr>
+          <td class="editable" contenteditable="true" data-model="product" data-attribute="name" data-url="<%= inline_update_product_path(product) %>"><%= product.name %></td>
+          <td class="editable"  contenteditable="true" data-model="product" data-attribute="price" data-url="<%= inline_update_product_path(product) %>"><%= number_to_currency(product.price) %></td>
+          <td>
+            <%= check_box_tag "product_#{product.id}", true, product.purchased, class: "purchased_checkbox", data: { url: inline_update_product_path(product) } %>
+          </td>
+          <td class="editable"  contenteditable="true" data-model="product" data-attribute="url" data-url="<%= inline_update_product_path(product) %>"><%= product.url %></td>
+          <td><%= link_to "Show Product", product %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
