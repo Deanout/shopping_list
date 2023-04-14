@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Prompt used:
 
-Things you may want to cover:
+Please use scaffolds where appropriate.
 
-* Ruby version
+how can i create a rails 7 app that has a shopping list. Products belong to categories, and each product has a price. Products may be marked as purchased with a checkbox.
 
-* System dependencies
+On the index page for the categories, list each category's products along with the category's total price.
 
-* Configuration
+At the top of all the categories, list the total for all products across all categories. Then list the total for all purchased items, and the total for the remaining items.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Allow inline editing
